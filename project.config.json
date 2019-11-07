@@ -1,7 +1,7 @@
 {
   "miniprogramRoot": "./dist",
   "projectname": "flash-helper",
-  "description": "flash helper",
+  "description": "闪电助手",
   "appid": "touristappid",
   "setting": {
     "urlCheck": true,

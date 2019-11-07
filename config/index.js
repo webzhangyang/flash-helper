@@ -1,6 +1,6 @@
 const config = {
   projectName: 'flash-helper',
-  date: '2019-11-6',
+  date: '2019-11-7',
   designWidth: 750,
   deviceRatio: {
     '640': 2.34 / 2,

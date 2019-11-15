@@ -3,6 +3,7 @@ import Taro, { Component } from "@tarojs/taro-h5";
 import { Provider } from "@tarojs/redux-h5";
 
 import configStore from "./store/index";
+import 'taro-ui/dist/style/index.scss'; // 全局引入一次即可taro-ui
 import './app.less';
 // 如果需要在 h5 环境中开启 React Devtools
 // 取消以下注释：

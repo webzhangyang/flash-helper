@@ -2,7 +2,7 @@ import { ComponentClass } from 'react'
 import Taro, { Component, Config } from '@tarojs/taro'
 import { View, Button, Text } from '@tarojs/components'
 import { connect } from '@tarojs/redux'
-
+import { AtButton } from 'taro-ui'
 import { add, minus, asyncAdd } from '../../actions/counter'
 
 import './index.less'
@@ -81,6 +81,7 @@ class Index extends Component {
         <Button className='add_btn' onClick={this.props.add}>+</Button>
         <Button className='dec_btn' onClick={this.props.dec}>-</Button>
         <Button className='dec_btn' onClick={this.props.asyncAdd}>async</Button>
+        <AtButton type='primary'>按钮文案</AtButton>
         <View><Text>{this.props.counter.num}</Text></View>
         <View><Text>Hello, World</Text></View>
       </View>

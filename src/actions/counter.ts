@@ -1,6 +1,7 @@
 import {
   ADD,
-  MINUS
+  MINUS,
+  CUSTO
 } from '../constants/counter'
 
 export const add = () => {
@@ -13,7 +14,12 @@ export const minus = () => {
     type: MINUS
   }
 }
-
+export const handleChange = (value) => {
+  return {
+    type: CUSTO,
+    value: value
+  }
+}
 // 异步的action
 export function asyncAdd () {
   return dispatch => {

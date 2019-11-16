@@ -1,4 +1,4 @@
-import { ADD, MINUS } from '../constants/counter';
+import { ADD, MINUS, CUSTO } from '../constants/counter';
 export const add = () => {
   return {
     type: ADD
@@ -7,6 +7,12 @@ export const add = () => {
 export const minus = () => {
   return {
     type: MINUS
+  };
+};
+export const handleChange = value => {
+  return {
+    type: CUSTO,
+    value: value
   };
 };
 // 异步的action

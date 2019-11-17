@@ -61,12 +61,16 @@ class App extends Component {
         path: '/pages/test/test',
         componentLoader: () => import( /* webpackChunkName: "test_test" */'./pages/test/test'),
         isIndex: false
+      }, {
+        path: '/pages/milkyTea/milkyTea',
+        componentLoader: () => import( /* webpackChunkName: "milkyTea_milkyTea" */'./pages/milkyTea/milkyTea'),
+        isIndex: false
       }]} customRoutes={{}} />
                 
         </Provider>;
   }
   config = {
-    pages: ["/pages/index/index", "/pages/test/test"],
+    pages: ["/pages/index/index", "/pages/test/test", "/pages/milkyTea/milkyTea"],
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#fff',

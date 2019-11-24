@@ -1,12 +1,12 @@
 import Nerv from "nervjs";
-import * as tslib_1 from "tslib";
-import { Component } from "@tarojs/taro-h5";
+import { __decorate } from "tslib";
+import Taro from "@tarojs/taro-h5";
 import { View, Button, Text } from '@tarojs/components';
 import { connect } from "@tarojs/redux-h5";
-import { AtButton } from 'taro-ui';
-import { add, minus, asyncAdd } from '../../actions/counter';
+import { AtButton, AtInputNumber } from 'taro-ui';
+import { add, minus, asyncAdd, handleChange } from '../../actions/counter';
 import './index.less';
-let Index = class Index extends Component {
+let Index = class Index extends Taro.Component {
   constructor() {
     super(...arguments);
     /**
@@ -28,6 +28,7 @@ let Index = class Index extends Component {
         <Button className="add_btn" onClick={this.props.add}>+</Button>
         <Button className="dec_btn" onClick={this.props.dec}>-</Button>
         <Button className="dec_btn" onClick={this.props.asyncAdd}>async</Button>
+        <AtInputNumber type="number" min={0} step={1} value={this.props.counter.num} onChange={this.props.handleChange} />
         <AtButton type="primary">按钮文案</AtButton>
         <View><Text>{this.props.counter.num}</Text></View>
         <View><Text>Hello, World</Text></View>
@@ -42,7 +43,7 @@ let Index = class Index extends Component {
   }
 
 };
-Index = tslib_1.__decorate([connect(({ counter }) => ({
+Index = __decorate([connect(({ counter }) => ({
   counter
 }), dispatch => ({
   add() {
@@ -50,6 +51,9 @@ Index = tslib_1.__decorate([connect(({ counter }) => ({
   },
   dec() {
     dispatch(minus());
+  },
+  handleChange(value) {
+    dispatch(handleChange(value));
   },
   asyncAdd() {
     dispatch(asyncAdd());

@@ -27,15 +27,15 @@ interface Params {
  	format	N	int	未来7天预报(future)两种返回格式，1或2，默认1
  	key	Y	string	在个人中心->我的数据,接口名称上方查看
 */
-interface IndexParams extends Params{
+interface IndexParams extends Params {
   cityname: string
 }
-export async function getWeatherByCityName(params:IndexParams = { cityname: '深圳'}):Promise<object>{
+export async function getWeatherByCityName(params: IndexParams = { cityname: '深圳' }): Promise<object> {
   return await getWeather({
     path: 'index',
     data: {
-      cityname : encodeURIComponent(params.cityname),
-      ...params 
+      cityname: encodeURIComponent(params.cityname),
+      ...params
     }
   })
 }
@@ -47,11 +47,11 @@ export async function getWeatherByCityName(params:IndexParams = { cityname: '深
  	format	N	int	未来7天预报(future)两种返回格式，1或2，默认1
  	key	Y	string	在个人中心->我的数据,接口名称上方查看
 */
-interface GPSParams extends Params{
+interface GPSParams extends Params {
   lon: string // 经度
   lat: string // 纬度
 }
-export async function getWeatherByGPS(params:GPSParams):Promise<object>{
+export async function getWeatherByGPS(params: GPSParams): Promise<object> {
   return await getWeather({
     path: 'geo',
     data: params
@@ -67,7 +67,7 @@ type PathOptions = {
   header?: object
   key?: string
 }
-export async function getWeather(options: PathOptions = { path: 'index',header: {'content-type': 'application/json'} }):Promise<object> {
+export async function getWeather(options: PathOptions = { path: 'index', header: { 'content-type': 'application/json' } }): Promise<object> {
   return await Taro.request({
     url: pathObj.getPath(options.path),
     data: {

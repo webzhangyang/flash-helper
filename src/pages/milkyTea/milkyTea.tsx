@@ -1,8 +1,8 @@
 import { ComponentClass } from 'react'
 import Taro, { Component, Config } from '@tarojs/taro'
-import { View, Button, Text, Image } from '@tarojs/components'
+import { View} from '@tarojs/components'
 import { connect } from '@tarojs/redux'
-import { AtInputNumber, AtSearchBar, AtFloatLayout, AtBadge, AtIcon } from 'taro-ui'
+import { AtSearchBar } from 'taro-ui'
 import { handleChange } from '../../actions/counter'
 import MilkyTeaList from './MilkyTeaList'
 import MilkyTeaPrice from './MilkyTeaPrice'
@@ -41,7 +41,7 @@ class milkyTea extends Component {
     navigationBarTitleText: '奶茶菜单'
   }
 
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps () {
     // console.log(this.props, nextProps)
   }
 
@@ -54,7 +54,7 @@ class milkyTea extends Component {
   render () {
     return (
       <View className='menu'>
-        <AtSearchBar  value="" />
+        <AtSearchBar  value="" onChange={()=>{}} />
         <MilkyTeaList></MilkyTeaList>
         <MilkyTeaPrice></MilkyTeaPrice>
       </View>

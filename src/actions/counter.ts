@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> f444cbec0dfa4798aa02941924816e567b0b8143
 import {
   ADD,
   MINUS,

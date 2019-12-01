@@ -31,7 +31,8 @@ class App extends Component {
     pages: [
       'pages/index/index',
       'pages/test/test',
-      'pages/milkyTea/milkyTea'
+      'pages/milkyTea/milkyTea',
+      'pages/weather/index/index',
     ],
     window: {
       backgroundTextStyle: 'light',

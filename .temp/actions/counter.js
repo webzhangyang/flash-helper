@@ -1,4 +1,5 @@
-import { ADD, MINUS, CUSTO, MILKY_TEA_LIST, MILKY_TEA_NUM, MILKY_TEA_SHOP_CAR, MILKY_TEA_GOODS } from '../constants/counter';
+import { reqWeather } from '../api/index';
+import { ADD, MINUS, CUSTO, MILKY_TEA_LIST, MILKY_TEA_NUM, MILKY_TEA_SHOP_CAR, MILKY_TEA_GOODS, WEATHER_MESSAGE } from '../constants/counter';
 export const add = () => {
   return {
     type: ADD
@@ -120,3 +121,21 @@ export const milkyTeaGoodsChangeAction = (item, value) => {
     milkyTeaNum: value
   };
 };
+/*------------天气模块-start--------------*/
+//把天气接口数据传给redux
+export const weatherMessage = data => {
+  return {
+    type: WEATHER_MESSAGE,
+    data
+  };
+};
+export const getWeatherMessage = () => {
+  return dispatch => {
+    //请求天气数据  用jsonp请求解决跨域问题
+    reqWeather('深圳').then(data => {
+      const action = weatherMessage(data);
+      dispatch(action);
+    }).catch(err => console.log(err));
+  };
+};
+/*------------天气模块-end--------------*/

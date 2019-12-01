@@ -1,4 +1,4 @@
-import { ADD, MINUS, CUSTO, MILKY_TEA_LIST, MILKY_TEA_NUM, MILKY_TEA_SHOP_CAR, MILKY_TEA_GOODS } from '../constants/counter'
+import { ADD, MINUS, CUSTO, MILKY_TEA_LIST, MILKY_TEA_NUM, MILKY_TEA_SHOP_CAR, MILKY_TEA_GOODS, WEATHER_MESSAGE } from '../constants/counter';
 
 const INITIAL_STATE = {
   num: 0,
@@ -6,7 +6,12 @@ const INITIAL_STATE = {
   milkyTeaGoodsNum: 0,
   milkyTeaTotal: 0,
   milkyTeaGoodsList: [],
-  milkyTeaShowFloat: false
+  milkyTeaShowFloat: false,
+  
+  /*-----------天气模块状态数据----------*/
+  city:'', //城市
+  weatherImg: '',//天气图片
+  weather: '', //天气
 }
 
 export default function counter (state = INITIAL_STATE, action) {
@@ -86,6 +91,12 @@ export default function counter (state = INITIAL_STATE, action) {
       }
       return{
         ...state
+      }
+    case WEATHER_MESSAGE:
+      return {
+        ...state,
+        weatherImg: action.data.weatherImg,
+        weather: action.data.weather
       }
      default:
        return state

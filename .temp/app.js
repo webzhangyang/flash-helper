@@ -65,12 +65,16 @@ class App extends Component {
         path: '/pages/milkyTea/milkyTea',
         componentLoader: () => import( /* webpackChunkName: "milkyTea_milkyTea" */'./pages/milkyTea/milkyTea'),
         isIndex: false
+      }, {
+        path: '/pages/weather/index/index',
+        componentLoader: () => import( /* webpackChunkName: "weather_index_index" */'./pages/weather/index/index'),
+        isIndex: false
       }]} customRoutes={{}} />
                 
         </Provider>;
   }
   config = {
-    pages: ["/pages/index/index", "/pages/test/test", "/pages/milkyTea/milkyTea"],
+    pages: ["/pages/index/index", "/pages/test/test", "/pages/milkyTea/milkyTea", "/pages/weather/index/index"],
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#fff',

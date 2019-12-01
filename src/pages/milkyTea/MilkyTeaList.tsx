@@ -41,10 +41,10 @@ interface MilkyTeaList {
 }))
 class MilkyTeaList extends Component {
 
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps () {
     // console.log(this.props.counter)
   }
-  shouldComponentUpdate(nextProps,nextState){
+  shouldComponentUpdate(nextProps){
     if(nextProps.counter !== this.props.counter){
         return true
     }else{
@@ -64,7 +64,7 @@ class MilkyTeaList extends Component {
   render () {
     return (
         <View>
-            {this.props.counter.milkyTeaMenuList.map((item,index)=>{
+            {this.props.counter.milkyTeaMenuList.map((item:{milkyTeaImg,milkyTeaCharge,milkyTeaName,milkyTeaNum,milkyTeaPrice})=>{
                 return (
                     <View className="at-row at-row__align--center">
                         <View className='at-col at-col-3 '>

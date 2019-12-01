@@ -49,12 +49,6 @@ class Weather extends Component {
    
   }
   componentDidMount () {
-     //定时器动态设置时间
-    this.interValId = setInterval(()=>{
-      this.setState({
-          sysTime: Tools.dateToStr(new Date())
-        })
-      },1000);
     this.props.getWeatherMessage()
   }
   componentWillUnmount () { }

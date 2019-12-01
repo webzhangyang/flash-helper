@@ -60,7 +60,7 @@ export default function counter (state = INITIAL_STATE, action) {
 
       return newState
     case MILKY_TEA_SHOP_CAR:
-        state.milkyTeaGoodsList = state.milkyTeaGoodsList.filter(val => {
+        state.milkyTeaGoodsList = state.milkyTeaGoodsList.filter((val:{milkyTeaNum}) => {
           return val.milkyTeaNum != 0
         })
       return{
@@ -68,7 +68,7 @@ export default function counter (state = INITIAL_STATE, action) {
         milkyTeaShowFloat: !state.milkyTeaShowFloat
       }
     case MILKY_TEA_GOODS:
-      state.milkyTeaGoodsList = state.milkyTeaGoodsList.filter(val => {
+      state.milkyTeaGoodsList = state.milkyTeaGoodsList.filter((val:{milkyTeaType}) => {
           return val.milkyTeaType !== action.option.milkyTeaType
       })
       if(action.milkyTeaNum != 0){

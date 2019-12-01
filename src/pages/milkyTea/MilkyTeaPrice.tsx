@@ -1,6 +1,6 @@
 import { ComponentClass} from 'react'
 import Taro, { Component } from '@tarojs/taro'
-import { View,} from '@tarojs/components'
+import { View} from '@tarojs/components'
 import { connect } from '@tarojs/redux'
 import { AtInputNumber, AtFloatLayout, AtBadge, AtIcon } from 'taro-ui'
 import { milkyTeaGoodsChangeAction, milkyTeaShopCarAction } from '../../actions/counter'
@@ -46,10 +46,10 @@ interface MilkyTeaPrice {
 class MilkyTeaPrice extends Component {
 
 
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps () {
     // console.log(this.props, nextProps)
   }
-  shouldComponentUpdate(nextProps,nextState){
+  shouldComponentUpdate(nextProps){
     if(nextProps.counter !== this.props.counter){
         return true
     }else{
@@ -67,7 +67,7 @@ class MilkyTeaPrice extends Component {
     return (
         <View>
             <AtFloatLayout isOpened={this.props.counter.milkyTeaShowFloat} onClose={this.props.milkyTeaShopCarAction} >
-              {this.props.counter.milkyTeaGoodsList.map((item,index) => {
+              {this.props.counter.milkyTeaGoodsList.map((item:{milkyTeaName,milkyTeaPrice,milkyTeaNum}) => {
                 return (
                   <View className="at-row">
               <View className='at-col at-col-3 '>{item.milkyTeaName}</View>

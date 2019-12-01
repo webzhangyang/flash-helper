@@ -18,5 +18,3 @@ export  const reqWeather = (city)=>{
       )
   })
 }
-
-//获取地理位置 

@@ -11,6 +11,7 @@ import './app.less';
 //   require('nerv-devtools')
 // }
 import Nerv from 'nervjs';
+import { View, Tabbar, TabbarContainer, TabbarPanel } from '@tarojs/components';
 import { Router, createHistory, mountApis } from '@tarojs/router';
 Taro.initPxTransform({
   "designWidth": 750,
@@ -34,6 +35,29 @@ mountApis({
 }, _taroHistory);
 const store = configStore();
 class App extends Component {
+  state = {
+    __tabs: {
+      color: "#bfbfbf",
+      selectedColor: "#2c2c2c",
+      backgroundColor: "#FBFBFB",
+      borderStyle: "white",
+      list: [{
+        pagePath: "/pages/index/index",
+        text: "首页",
+        iconPath: require("./assets/img/home_gray.png"),
+        selectedIconPath: require("./assets/img/home.png")
+      }, {
+        pagePath: "/pages/tool/tool",
+        text: "工具",
+        iconPath: require("./assets/img/tool_gray.png"),
+        selectedIconPath: require("./assets/img/tool.png")
+      }],
+      mode: "hash",
+      basename: "/",
+      customRoutes: {}
+    }
+  };
+
   constructor() {
     super(...arguments);
     /**
@@ -53,34 +77,53 @@ class App extends Component {
   render() {
     return <Provider store={store}>
           
+        <TabbarContainer>
+          
+        <TabbarPanel>
+          
                 <Router mode={"hash"} history={_taroHistory} routes={[{
-        path: '/pages/index/index',
-        componentLoader: () => import( /* webpackChunkName: "index_index" */'./pages/index/index'),
-        isIndex: true
-      }, {
-        path: '/pages/test/test',
-        componentLoader: () => import( /* webpackChunkName: "test_test" */'./pages/test/test'),
-        isIndex: false
-      }, {
-        path: '/pages/milkyTea/milkyTea',
-        componentLoader: () => import( /* webpackChunkName: "milkyTea_milkyTea" */'./pages/milkyTea/milkyTea'),
-        isIndex: false
-      }]} customRoutes={{}} />
+            path: '/pages/index/index',
+            componentLoader: () => import( /* webpackChunkName: "index_index" */'./pages/index/index'),
+            isIndex: true
+          }, {
+            path: '/pages/tool/tool',
+            componentLoader: () => import( /* webpackChunkName: "tool_tool" */'./pages/tool/tool'),
+            isIndex: false
+          }, {
+            path: '/pages/test/test',
+            componentLoader: () => import( /* webpackChunkName: "test_test" */'./pages/test/test'),
+            isIndex: false
+          }, {
+            path: '/pages/milkyTea/milkyTea',
+            componentLoader: () => import( /* webpackChunkName: "milkyTea_milkyTea" */'./pages/milkyTea/milkyTea'),
+            isIndex: false
+          }]} customRoutes={{}} />
                 
+        </TabbarPanel>
+        <Tabbar conf={this.state.__tabs} homePage="pages/index/index" />
+        </TabbarContainer>
         </Provider>;
   }
   config = {
-    pages: ["/pages/index/index", "/pages/test/test", "/pages/milkyTea/milkyTea"],
+    pages: ["/pages/index/index", "/pages/tool/tool", "/pages/test/test", "/pages/milkyTea/milkyTea"],
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#fff',
       navigationBarTitleText: 'WeChat',
       navigationBarTextStyle: 'black'
+    },
+    tabBar: { color: "#bfbfbf", selectedColor: "#2c2c2c", backgroundColor: "#FBFBFB", borderStyle: "white", list: [{ pagePath: "/pages/index/index", text: "首页", iconPath: require("./assets/img/home_gray.png"), selectedIconPath: require("./assets/img/home.png") }, { pagePath: "/pages/tool/tool", text: "工具", iconPath: require("./assets/img/tool_gray.png"), selectedIconPath: require("./assets/img/tool.png") }], mode: "hash",
+      basename: "/",
+      customRoutes: {}
     }
   };
 
   componentWillUnmount() {
     this.componentDidHide();
+  }
+
+  componentWillMount() {
+    Taro.initTabBarApis(this, Taro);
   }
 
 }

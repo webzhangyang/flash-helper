@@ -1,11 +1,10 @@
 import { ComponentClass } from 'react'
 import Taro, { Component, Config } from '@tarojs/taro'
-import { View, Button, Text } from '@tarojs/components'
-import { connect } from '@tarojs/redux'
-import { AtButton, AtInputNumber } from 'taro-ui'
-import { add, minus, asyncAdd, handleChange } from '../../actions/counter'
+import { View, OpenData } from '@tarojs/components'
+// import { connect } from '@tarojs/redux'
 
 import './index.less'
+import header from '../../assets/img/header.jpg'
 
 // #region 书写注意
 //
@@ -24,10 +23,7 @@ type PageStateProps = {
 }
 
 type PageDispatchProps = {
-  add: () => void
-  dec: () => void
-  handleChange: () => void
-  asyncAdd: () => any
+
 }
 
 type PageOwnProps = {}
@@ -40,24 +36,22 @@ interface Index {
   props: IProps;
 }
 
-@connect(({ counter }) => ({
-  counter
-}), (dispatch) => ({
-  add () {
-    dispatch(add())
-  },
-  dec () {
-    dispatch(minus())
-  },
-  handleChange (value) {
-    dispatch(handleChange(value))
-  },
-  asyncAdd () {
-    dispatch(asyncAdd())
-  }
-}))
-class Index extends Component {
+// type State = {
+//   time:string
+// }
 
+// @connect(({ counter }) => ({
+//   counter
+// }), () => ({
+ 
+// }))
+class Index extends Component {
+  state = {
+    time:'15:30'
+  }
+  constructor(props){
+    super(props) //调用父类的构造函数，固定写法
+  }
     /**
    * 指定config的类型声明为: Taro.Config
    *
@@ -65,10 +59,9 @@ class Index extends Component {
    * 对于像 navigationBarTextStyle: 'black' 这样的推导出的类型是 string
    * 提示和声明 navigationBarTextStyle: 'black' | 'white' 类型冲突, 需要显示声明类型
    */
-    config: Config = {
+  config: Config = {
     navigationBarTitleText: '首页'
   }
-
   componentWillReceiveProps (nextProps) {
     console.log(this.props, nextProps)
   }
@@ -82,22 +75,13 @@ class Index extends Component {
   render () {
     return (
       <View className='index'>
-        <Button className='add_btn' onClick={this.props.add}>+</Button>
-        <Button className='dec_btn' onClick={this.props.dec}>-</Button>
-        <Button className='dec_btn' onClick={this.props.asyncAdd}>async</Button>
-        <AtInputNumber
-          type='number'
-          min={0}
-          step={1}
-          value={this.props.counter.num}
-          onChange={this.props.handleChange}
-        />
-        <AtButton type='primary'>按钮文案</AtButton>
-        <View><Text>{this.props.counter.num}</Text></View>
-        <View><Text>Hello, World</Text></View>
+        <OpenData type='userAvatarUrl' default-avatar={header} className='index_header'/>
+        <View className='index_time'>{this.state.time}</View>
+        <View>Good afternoon, <OpenData type='userNickName' default-text='1234' className='index_userName'/>.</View>
       </View>
     )
   }
+
 }
 
 // #region 导出注意

@@ -42,10 +42,6 @@ export const milkyTeaList = (data) => {
 //获取奶茶列表
 export const getMilkyTeaList = ()=>{
   return (dispatch) => {
-    // axios.get('https://www.easy-mock.com/mock/5dd0db8aa881483f4735b64a/milkyTeaList').then((res)=>{
-    //   const action = milkyTeaList(res.data.data)
-    //   dispatch(action)
-    // })
     let res = {
       "data": {
         list: [{

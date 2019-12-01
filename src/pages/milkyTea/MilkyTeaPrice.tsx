@@ -70,7 +70,7 @@ class MilkyTeaPrice extends Component {
               {this.props.counter.milkyTeaGoodsList.map((item:{milkyTeaName,milkyTeaPrice,milkyTeaNum}) => {
                 return (
                   <View className="at-row">
-              <View className='at-col at-col-3 '>{item.milkyTeaName}</View>
+                    <View className='at-col at-col-3 '>{item.milkyTeaName}</View>
                     <View className='at-col at-col-3 floatPrice'>￥{item.milkyTeaPrice * item.milkyTeaNum}.0元</View>
                     <View className="at-col at-col-3 at-col__offset-3" >
                       <AtInputNumber

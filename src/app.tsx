@@ -30,6 +30,7 @@ class App extends Component {
   config: Config = {
     pages: [
       'pages/index/index',
+      'pages/tool/tool',
       'pages/test/test',
       'pages/milkyTea/milkyTea'
     ],
@@ -38,6 +39,25 @@ class App extends Component {
       navigationBarBackgroundColor: '#fff',
       navigationBarTitleText: 'WeChat',
       navigationBarTextStyle: 'black'
+    },
+    tabBar: {
+      color: "#bfbfbf",
+      selectedColor: "#2c2c2c",
+      backgroundColor: "#FBFBFB",
+      borderStyle: "white",
+      list: [{
+        pagePath: "pages/index/index",
+        text: "首页",
+        iconPath: "assets/img/home_gray.png",
+        selectedIconPath: "assets/img/home.png"
+      },
+      {
+        pagePath: "pages/tool/tool",
+        text: "工具",
+        iconPath: "assets/img/tool_gray.png",
+        selectedIconPath: "assets/img/tool.png"
+      }
+      ]
     }
   }
 
